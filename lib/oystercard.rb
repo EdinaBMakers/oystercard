@@ -13,6 +13,14 @@ class Oystercard
     @balance += amount
   end
 
+  def deduct(amount)
+    @balance -= amount
+  end
+
+  def in_journey?
+    false
+  end
+
   private
 
   def exceed_max_balance?(amount)
