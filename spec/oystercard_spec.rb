@@ -32,15 +32,22 @@ describe Oystercard do
   end
 
   it 'is in use after touch in' do
+    subject.top_up(Oystercard::MINIMUM_BALANCE)
     subject.touch_in
 
     expect(subject).to be_in_journey
   end
 
   it 'is not in use after touch out' do
+    subject.top_up(Oystercard::MINIMUM_BALANCE)
     subject.touch_in
     subject.touch_out
 
     expect(subject).not_to be_in_journey
+  end
+
+  it 'raises error when touching in with balance lower than minimum balance' do
+    expect { subject.touch_in }.to \
+    raise_error("Balance is not enough for a single journey")
   end
 end
