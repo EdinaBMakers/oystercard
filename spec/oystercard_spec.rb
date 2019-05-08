@@ -77,4 +77,8 @@ describe Oystercard do
 
     expect(subject.entry_station).to be_nil
   end
+
+  it 'has an empty journey history by default' do
+    expect(subject.journey_history).to be_empty
+  end
 end
