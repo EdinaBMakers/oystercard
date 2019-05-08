@@ -28,19 +28,19 @@ describe Oystercard do
   end
 
   it 'is not in use by default' do
-    expect(subject.in_journey?).to eq(false)
+    expect(subject).not_to be_in_journey
   end
 
   it 'is in use after touch in' do
     subject.touch_in
 
-    expect(subject.in_journey?).to eq(true)
+    expect(subject).to be_in_journey
   end
 
   it 'is not in use after touch out' do
     subject.touch_in
     subject.touch_out
 
-    expect(subject.in_journey?).to eq(false)
+    expect(subject).not_to be_in_journey
   end
 end
