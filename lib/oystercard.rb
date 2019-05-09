@@ -25,8 +25,12 @@ class Oystercard
     @entry_station = station
   end
 
-  def touch_out
+  def touch_out(station)
     deduct(SINGLE_FARE)
+    @journey_history << { \
+      :entry_station => @entry_station, \
+      :exit_station => station \
+    }
     @entry_station = nil
   end
 
